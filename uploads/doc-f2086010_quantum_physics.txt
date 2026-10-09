@@ -1,0 +1,7 @@
+Chapter 1: Quantum Mechanics Basics
+
+Planck's constant relates the energy of a photon to its frequency: E = h * f. The photoelectric effect proves that light behaves as discrete packets called quanta.
+
+Chapter 2: Wave Particle Duality
+
+De Broglie hypothesized that all matter exhibits wave-like behavior with wavelength lambda = h / p.

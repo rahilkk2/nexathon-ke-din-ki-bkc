@@ -82,7 +82,7 @@ class DataScienceEngine:
         df["score"] = df["score"].clip(lower=0.0, upper=1.0)
 
         # Validation Rule 3: Ensure timestamps parse cleanly
-        df["completed_at"] = pd.to_datetime(df["completed_at"], utc=True)
+        df["completed_at"] = pd.to_datetime(df["completed_at"], format="ISO8601", utc=True)
         df = df.sort_values(by="completed_at", ascending=True)
 
         return df
@@ -110,7 +110,7 @@ class DataScienceEngine:
         if df.empty:
             return pd.DataFrame()
 
-        df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+        df["timestamp"] = pd.to_datetime(df["timestamp"], format="ISO8601", utc=True)
         df["is_correct"] = df["is_correct"].astype(int)
         df["difficulty"] = df["difficulty"].fillna("Medium")
         return df
