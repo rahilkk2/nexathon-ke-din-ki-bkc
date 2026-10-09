@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FloatingTextbook AI — Where textbooks come alive.</title>
+<meta name="description" content="FloatingTextbook AI transforms a static textbook into an interactive, intelligent AI teacher." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Mobile top bar -->
+<header class="mobile-topbar">
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-brand">
+    <span class="mobile-brand-mark" aria-hidden="true">✦</span>
+    <span class="mobile-brand-name">FloatingTextbook</span>
+  </div>
+  <div class="mobile-avatar" aria-hidden="true">AM</div>
+</header>
+
+<!-- Overlay for mobile sidebar -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+
+    <div class="sidebar-brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 6C15 10 8 12 6 13v18c8 1 14 4 18 9 4-5 10-8 18-9V13c-2-1-9-3-18-7Z" stroke="var(--coral)" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M24 13v25" stroke="var(--coral)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M24 13c-4 2-5 6-5 9s2 6 5 8" stroke="var(--peach)" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">FloatingTextbook<span class="brand-ai">AI</span></span>
+        <span class="brand-tagline">Where textbooks come alive.</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <p class="nav-label">Curriculum</p>
+        <ul>
+          <li><button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span><span>Dashboard</span></button></li>
+          <li><button class="nav-item" data-page="my-learning"><span class="nav-icon">▤</span><span>My Textbooks</span></button></li>
+          <li><button class="nav-item" data-page="upload"><span class="nav-icon">⇪</span><span>Upload Material</span></button></li>
+          <li><button class="nav-item" data-page="explore"><span class="nav-icon">📖</span><span>Explore & Read</span></button></li>
+        </ul>
+      </div>
+
+      <div class="nav-divider" role="separator"></div>
+
+      <div class="nav-group">
+        <p class="nav-label">Active Learning</p>
+        <ul>
+          <li><button class="nav-item" data-page="interactive-labs"><span class="nav-icon">⚗</span><span>Interactive Labs</span></button></li>
+          <li><button class="nav-item" data-page="practice"><span class="nav-icon">✎</span><span>Adaptive Quizzes</span></button></li>
+          <li><button class="nav-item" data-page="missions"><span class="nav-icon">🎯</span><span>Missions</span></button></li>
+          <li><button class="nav-item" data-page="ai-teacher"><span class="nav-icon">✦</span><span>Socratic Tutor</span></button></li>
+        </ul>
+      </div>
+
+      <div class="nav-divider" role="separator"></div>
+
+      <div class="nav-group">
+        <p class="nav-label">Data Science & Mastery</p>
+        <ul>
+          <li><button class="nav-item" data-page="learning-gaps"><span class="nav-icon">⚠</span><span>Learning Gaps</span></button></li>
+          <li><button class="nav-item" data-page="revision"><span class="nav-icon">↻</span><span>Study Plan</span></button></li>
+          <li><button class="nav-item" data-page="mastery"><span class="nav-icon">◆</span><span>Analytics & Mastery</span></button></li>
+        </ul>
+      </div>
+
+      <div class="nav-divider" role="separator"></div>
+
+      <div class="nav-group">
+        <ul>
+          <li><button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span><span>Settings & Data</span></button></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="streak-card">
+        <div class="streak-top">
+          <span class="streak-flame" aria-hidden="true">🔥</span>
+          <div>
+            <p class="streak-title">7 Day Streak</p>
+            <p class="streak-sub">Keep it up!</p>
+          </div>
+        </div>
+        <div class="streak-progress-track" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="7" aria-label="5 of 7 days">
+          <div class="streak-progress-fill" style="width: 71%;"></div>
+        </div>
+        <p class="streak-count">5 / 7 Days</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-avatar" aria-hidden="true">AM</div>
+        <div>
+          <p class="profile-name">Ayaan M.</p>
+          <p class="profile-role">Student</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="main-content" id="mainContent" tabindex="-1">
+    <!-- Content is injected by script.js per page -->
+  </main>
+</div>
+
+<!-- Bottom nav for mobile -->
+<nav class="mobile-bottom-nav" aria-label="Quick navigation">
+  <button class="bnav-item active" data-page="home" aria-label="Home"><span>⌂</span></button>
+  <button class="bnav-item" data-page="ai-teacher" aria-label="AI Teacher"><span>✦</span></button>
+  <button class="bnav-item" data-page="practice" aria-label="Practice"><span>✎</span></button>
+  <button class="bnav-item" data-page="mastery" aria-label="Mastery"><span>◆</span></button>
+  <button class="bnav-item" data-page="settings" aria-label="Settings"><span>⚙</span></button>
+</nav>
+
+<!-- ============ PAGE TEMPLATES (cloned by script.js) ============ -->
+<template id="tpl-home">
+  <div class="page page-home">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <span class="brand-pill">✦ FloatingTextbook AI</span>
+      <h1 id="hero-heading" class="hero-heading">Your <span class="accent">AI</span> teacher.</h1>
+      <p class="hero-sub">Learn anything. Understand everything.</p>
+      <p class="hero-support">Ask a question, upload your study material, or let your AI teacher guide you through what to learn next.</p>
+    </section>
+
+    <!-- LEARNING INPUT -->
+    <section class="learning-card" aria-label="Ask your AI teacher">
+      <div class="learning-input-wrap">
+        <label for="learningInput" class="sr-only">What do you want to learn today?</label>
+        <textarea id="learningInput" class="learning-input" rows="2" placeholder="What do you want to learn today?"></textarea>
+
+        <div class="learning-toolbar">
+          <div class="upload-actions">
+            <button class="upload-chip" data-upload="pdf" aria-label="Upload PDF">
+              <span class="chip-icon">📄</span> Upload PDF
+            </button>
+            <button class="upload-chip" data-upload="notes" aria-label="Upload notes">
+              <span class="chip-icon">📝</span> Notes
+            </button>
+            <button class="upload-chip" data-upload="image" aria-label="Upload image">
+              <span class="chip-icon">🖼</span> Image
+            </button>
+            <button class="upload-chip" data-upload="slides" aria-label="Upload slides">
+              <span class="chip-icon">🖥</span> Slides
+            </button>
+          </div>
+
+          <div class="input-actions">
+            <button class="voice-btn" id="voiceBtn" aria-label="Start voice input">
+              <span class="voice-icon" aria-hidden="true">🎙</span>
+              <span class="voice-label">Voice</span>
+            </button>
+            <button class="send-btn" id="sendBtn" aria-label="Send message">
+              <span aria-hidden="true">↑</span>
+            </button>
+          </div>
+        </div>
+
+        <input type="file" id="fileInputPdf" accept="application/pdf" class="visually-hidden-input" />
+        <input type="file" id="fileInputNotes" accept=".txt,.doc,.docx,.md" class="visually-hidden-input" />
+        <input type="file" id="fileInputImage" accept="image/*" class="visually-hidden-input" />
+        <input type="file" id="fileInputSlides" accept=".ppt,.pptx,.pdf" class="visually-hidden-input" />
+
+        <div class="upload-status" id="uploadStatus" hidden>
+          <span class="upload-check" aria-hidden="true">✓</span>
+          <div>
+            <p class="upload-filename">File selected</p>
+            <p class="upload-hint" id="uploadHint">Ready to learn from this material.</p>
+          </div>
+        </div>
+
+        <div class="voice-status" id="voiceStatus" hidden></div>
+      </div>
+
+      <!-- Mock AI response area -->
+      <div class="ai-response" id="aiResponse" hidden aria-live="polite"></div>
+    </section>
+
+    <!-- QUICK PROMPTS -->
+    <section class="quick-prompts" aria-label="Suggested prompts">
+      <p class="section-label">Try</p>
+      <div class="chip-row">
+        <button class="prompt-chip">Explain photosynthesis simply</button>
+        <button class="prompt-chip">Teach me calculus step by step</button>
+        <button class="prompt-chip">I don't understand compound interest</button>
+        <button class="prompt-chip">Quiz me on this chapter</button>
+        <button class="prompt-chip">Make revision notes from my PDF</button>
+      </div>
+    </section>
+
+    <!-- CONTINUE LEARNING -->
+    <section class="continue-learning" aria-label="Continue learning">
+      <div class="section-heading-row">
+        <h2 class="section-heading">Continue Learning</h2>
+      </div>
+      <div class="learning-cards-grid">
+
+        <article class="learning-topic-card">
+          <p class="topic-subject">Physics</p>
+          <h3 class="topic-name">Electromagnetic Induction</h3>
+          <div class="mastery-row">
+            <div class="mastery-track" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="68% mastered">
+              <div class="mastery-fill" style="width:68%;"></div>
+            </div>
+            <span class="mastery-pct">68%</span>
+          </div>
+          <p class="mastery-caption">mastered</p>
+          <button class="topic-action">Continue →</button>
+        </article>
+
+        <article class="learning-topic-card">
+          <p class="topic-subject">Mathematics</p>
+          <h3 class="topic-name">Integration</h3>
+          <div class="mastery-row">
+            <div class="mastery-track" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" aria-label="42% mastered">
+              <div class="mastery-fill" style="width:42%;"></div>
+            </div>
+            <span class="mastery-pct">42%</span>
+          </div>
+          <p class="mastery-caption">mastered</p>
+          <button class="topic-action">Continue →</button>
+        </article>
+
+        <article class="learning-topic-card">
+          <p class="topic-subject">Chemistry</p>
+          <h3 class="topic-name">Organic Reactions</h3>
+          <div class="mastery-row">
+            <div class="mastery-track" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" aria-label="81% mastered">
+              <div class="mastery-fill" style="width:81%;"></div>
+            </div>
+            <span class="mastery-pct">81%</span>
+          </div>
+          <p class="mastery-caption">mastered</p>
+          <button class="topic-action">Review →</button>
+        </article>
+
+        <article class="learning-topic-card">
+          <p class="topic-subject">Biology</p>
+          <h3 class="topic-name">Cell Respiration</h3>
+          <div class="mastery-row">
+            <div class="mastery-track" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="55% mastered">
+              <div class="mastery-fill" style="width:55%;"></div>
+            </div>
+            <span class="mastery-pct">55%</span>
+          </div>
+          <p class="mastery-caption">mastered</p>
+          <button class="topic-action">Continue →</button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PERSONALIZED INSIGHT -->
+    <section class="insight-card" aria-label="Personalized insight">
+      <div class="insight-icon" aria-hidden="true">✦</div>
+      <div class="insight-body">
+        <p class="insight-eyebrow">Your AI teacher noticed…</p>
+        <p class="insight-observation">You've been making mistakes in Integration by Parts.</p>
+        <p class="insight-recommend-label">Recommended next step</p>
+        <p class="insight-recommendation">Practice 5 problems on Integration by Parts before moving to Definite Integrals.</p>
+        <button class="insight-btn">Start Practice →</button>
+      </div>
+    </section>
+
+    <!-- FEATURE CARDS -->
+    <section class="feature-grid" aria-label="Platform features">
+      <article class="feature-card feature-coral">
+        <div class="feature-icon" aria-hidden="true">◆</div>
+        <h3>Smart Learning</h3>
+        <p>Personalized lessons built around your understanding.</p>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </article>
+      <article class="feature-card feature-peach">
+        <div class="feature-icon" aria-hidden="true">✦</div>
+        <h3>Concept Clarity</h3>
+        <p>Clear explanations, examples and visual teaching.</p>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </article>
+      <article class="feature-card feature-sage">
+        <div class="feature-icon" aria-hidden="true">✎</div>
+        <h3>Practice More</h3>
+        <p>Practice questions targeted to your weak areas.</p>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </article>
+      <article class="feature-card feature-gold">
+        <div class="feature-icon" aria-hidden="true">◈</div>
+        <h3>Track Progress</h3>
+        <p>Monitor your learning, mastery and growth.</p>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </article>
+    </section>
+
+  </div>
+</template>
+
+<template id="tpl-my-learning">
+  <div class="page page-generic">
+    <div class="section-heading-row" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;">
+      <div>
+        <h1 class="page-title">My Textbooks & Materials</h1>
+        <p class="page-subtitle">Interactive, processed study materials with indexed page numbers and concept chunks.</p>
+      </div>
+      <button class="mini-btn mini-btn-primary" onclick="window.FloatingApp.goToPage('upload')">⇪ Upload New Textbook</button>
+    </div>
+
+    <div id="textbooksContainer" class="generic-grid">
+      <!-- Injected dynamically by script.js -->
+    </div>
+  </div>
+</template>
+
+<template id="tpl-upload">
+  <div class="page page-generic">
+    <h1 class="page-title">Upload Textbook Material</h1>
+    <p class="page-subtitle">Upload your course textbook, notes, or lecture slides. Supported: PDF, TXT, MD.</p>
+
+    <div class="lab-card" style="max-width:800px; margin:0 auto;">
+      <div class="drop-zone" id="mainDropZone">
+        <div class="drop-icon">📄</div>
+        <p class="drop-title">Drag & Drop your Textbook PDF here</p>
+        <p class="drop-sub">or click to browse from your computer (PDF, TXT, MD)</p>
+        <input type="file" id="primaryFileInput" accept=".pdf,.txt,.md,.docx" style="display:none;" />
+      </div>
+
+      <div style="margin-top:20px; display:flex; gap:14px; align-items:center;">
+        <label for="uploadSubject" style="font-size:13px; font-weight:700;">Subject Category:</label>
+        <select id="uploadSubject" style="padding:8px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); font-family:var(--font-body);">
+          <option value="Physics">Physics</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Biology">Biology</option>
+          <option value="Financial Mathematics">Financial Mathematics</option>
+          <option value="General STEM">General STEM</option>
+        </select>
+        <button class="mini-btn mini-btn-primary" id="startUploadBtn" style="margin-left:auto;">Process & Index Textbook →</button>
+      </div>
+
+      <div id="uploadProgressBox" style="margin-top:20px; display:none;">
+        <div class="control-label-row">
+          <span id="uploadStatusText">Extracting pages and section boundaries…</span>
+          <span id="uploadPctText">60%</span>
+        </div>
+        <div class="mastery-track" style="margin-top:8px;">
+          <div id="uploadBarFill" class="mastery-fill" style="width:60%; background:var(--coral);"></div>
+        </div>
+      </div>
+
+      <div id="uploadResultCard" class="explanation-box" style="display:none; margin-top:20px;">
+        <!-- Injected on upload finish -->
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-explore">
+  <div class="page page-generic">
+    <h1 class="page-title">Smart Textbook Reader</h1>
+    <p class="page-subtitle">Explore curriculum concepts grounded with verified page numbers and textbook excerpts.</p>
+
+    <div class="lab-layout" style="margin-top:20px;">
+      <aside class="generic-block" style="height:fit-content;">
+        <h2>Textbook Topics</h2>
+        <ul class="list-rows" id="exploreTopicList">
+          <!-- Injected dynamically -->
+        </ul>
+      </aside>
+
+      <section class="generic-block wide" id="exploreReaderPane">
+        <div id="chunkReaderContent">
+          <p class="muted">Select a topic from the left to read indexed textbook excerpts.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-interactive-labs">
+  <div class="page page-generic">
+    <h1 class="page-title">Interactive Living Textbook Labs</h1>
+    <p class="page-subtitle">Adjust real mathematical and physical parameters to build deep conceptual intuition.</p>
+
+    <div class="concept-stages" style="margin-bottom:24px;">
+      <button class="stage-btn active" id="tabLabFaraday">Lab 1: Faraday's Law & Electromagnetic Induction</button>
+      <button class="stage-btn" id="tabLabFinance">Lab 2: Compound Interest & Capital Growth</button>
+    </div>
+
+    <!-- LAB 1: FARADAY'S LAW -->
+    <div id="labFaradaySection" class="lab-container">
+      <div class="lab-card">
+        <div class="lab-header">
+          <div>
+            <h2 class="lab-title">Faraday's Law & Induced EMF Explorer</h2>
+            <p class="lab-subtitle">Formula: \(\mathcal{E} = -N \frac{\Delta \Phi}{\Delta t}\) | Lenz's Law Opposition</p>
+          </div>
+          <button class="mini-btn" id="resetFaradayBtn">Reset Parameters</button>
+        </div>
+
+        <div class="lab-layout">
+          <div class="lab-controls">
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Coil Turns (\(N\)):</span>
+                <span class="control-value" id="valCoilTurns">200 turns</span>
+              </div>
+              <input type="range" min="50" max="600" step="25" value="200" class="lab-slider" id="sliderTurns" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Magnet Speed (\(v\)):</span>
+                <span class="control-value" id="valMagnetSpeed">4.0 m/s</span>
+              </div>
+              <input type="range" min="1" max="10" step="0.5" value="4.0" class="lab-slider" id="sliderSpeed" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Magnetic Field (\(B\)):</span>
+                <span class="control-value" id="valMagField">0.8 Tesla</span>
+              </div>
+              <input type="range" min="0.2" max="2.5" step="0.1" value="0.8" class="lab-slider" id="sliderField" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Coil Area (\(A\)):</span>
+                <span class="control-value" id="valCoilArea">0.05 m²</span>
+              </div>
+              <input type="range" min="0.01" max="0.12" step="0.01" value="0.05" class="lab-slider" id="sliderArea" />
+            </div>
+          </div>
+
+          <div class="lab-visualization">
+            <div class="canvas-wrap">
+              <canvas id="faradayCanvas" class="lab-canvas" width="600" height="220"></canvas>
+              <div class="canvas-legend">
+                <span>🔴 Induced EMF Voltage Waveform \(\mathcal{E}(t)\)</span>
+                <span>🔵 Magnetic Flux \(\Phi(t)\)</span>
+              </div>
+            </div>
+
+            <div class="readout-grid">
+              <div class="readout-box">
+                <p class="readout-label">Peak Flux (\(\Phi\))</p>
+                <p class="readout-val" id="readoutFlux">0.040 Wb</p>
+              </div>
+              <div class="readout-box">
+                <p class="readout-label">Flux Delta (\(\frac{d\Phi}{dt}\))</p>
+                <p class="readout-val" id="readoutRate">0.32 Wb/s</p>
+              </div>
+              <div class="readout-box">
+                <p class="readout-label">Induced EMF (\(\mathcal{E}\))</p>
+                <p class="readout-val" id="readoutEMF">64.0 V</p>
+              </div>
+              <div class="readout-box">
+                <p class="readout-label">Induced Current (\(I\))</p>
+                <p class="readout-val" id="readoutCurrent">6.40 A</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="concept-stages">
+          <button class="stage-btn active" data-fstage="1">Stage 1: Magnet Approaches</button>
+          <button class="stage-btn" data-fstage="2">Stage 2: Magnet at Coil Center</button>
+          <button class="stage-btn" data-fstage="3">Stage 3: Magnet Departs</button>
+        </div>
+        <div class="stage-explanation" id="faradayStageExplanation">
+          <strong>Stage 1 (Approaching):</strong> Magnetic flux entering the coil increases (\(\frac{d\Phi}{dt} > 0\)). By Lenz's Law, the coil induces a repulsive North pole and opposing EMF to resist the incoming magnet.
+        </div>
+      </div>
+    </div>
+
+    <!-- LAB 2: COMPOUND INTEREST -->
+    <div id="labFinanceSection" class="lab-container" style="display:none;">
+      <div class="lab-card">
+        <div class="lab-header">
+          <div>
+            <h2 class="lab-title">Compound Growth & Exponential Accumulation Lab</h2>
+            <p class="lab-subtitle">Discrete Formula: \(A = P\left(1 + \frac{r}{n}\right)^{nt}\) | Continuous: \(A = P e^{rt}\)</p>
+          </div>
+          <button class="mini-btn" id="resetFinanceBtn">Reset Parameters</button>
+        </div>
+
+        <div class="lab-layout">
+          <div class="lab-controls">
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Principal (\(P\)):</span>
+                <span class="control-value" id="valFinP">$5,000</span>
+              </div>
+              <input type="range" min="1000" max="50000" step="1000" value="5000" class="lab-slider" id="sliderFinP" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Annual Return (\(r\)):</span>
+                <span class="control-value" id="valFinR">8.0%</span>
+              </div>
+              <input type="range" min="2" max="18" step="0.5" value="8.0" class="lab-slider" id="sliderFinR" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Time Period (\(t\)):</span>
+                <span class="control-value" id="valFinT">10 Years</span>
+              </div>
+              <input type="range" min="1" max="30" step="1" value="10" class="lab-slider" id="sliderFinT" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Compounding (\(n\)):</span>
+                <span class="control-value" id="valFinN">Monthly (12)</span>
+              </div>
+              <select id="selectCompounding" style="padding:6px 10px; border-radius:var(--radius-sm); border:1px solid var(--border);">
+                <option value="1">Annually (n = 1)</option>
+                <option value="4">Quarterly (n = 4)</option>
+                <option value="12" selected>Monthly (n = 12)</option>
+                <option value="365">Daily (n = 365)</option>
+                <option value="inf">Continuous (e^rt)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lab-visualization">
+            <div class="canvas-wrap">
+              <canvas id="financeCanvas" class="lab-canvas" width="600" height="220"></canvas>
+              <div class="canvas-legend">
+                <span>🟠 Compounded Balance Curve</span>
+                <span>⚪ Simple Interest Baseline</span>
+              </div>
+            </div>
+
+            <div class="readout-grid">
+              <div class="readout-box">
+                <p class="readout-label">Principal Deposited</p>
+                <p class="readout-val" id="readoutInitial">$5,000</p>
+              </div>
+              <div class="readout-box">
+                <p class="readout-label">Interest Earned</p>
+                <p class="readout-val" id="readoutInterest">$5,984</p>
+              </div>
+              <div class="readout-box">
+                <p class="readout-label">Final Value (\(A\))</p>
+                <p class="readout-val" id="readoutFuture">$10,984</p>
+              </div>
+              <div class="readout-box">
+                <p class="readout-label">Compounding Premium</p>
+                <p class="readout-val" id="readoutPremium">+$1,984</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-practice">
+  <div class="page page-generic">
+    <h1 class="page-title">Adaptive Quiz Engine</h1>
+    <p class="page-subtitle">Assess conceptual understanding, record empirical performance, and feed the Data Science engine.</p>
+
+    <!-- Quiz Selection List View -->
+    <div id="quizListView">
+      <div class="generic-grid" id="quizzesCardsContainer">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+
+    <!-- Active Interactive Quiz Runner View -->
+    <div id="quizRunnerView" style="display:none;">
+      <div class="quiz-runner-card">
+        <div class="quiz-progress-row">
+          <span class="quiz-q-counter" id="runnerCounter">Question 1 of 3</span>
+          <span class="pill-badge pill-medium" id="runnerDifficulty">Medium</span>
+        </div>
+
+        <h2 class="quiz-q-text" id="runnerQuestionText">Loading question prompt…</h2>
+
+        <div class="quiz-options-list" id="runnerOptionsList">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div class="hint-box" id="runnerHintBox" style="display:none;">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div class="quiz-actions-row">
+          <button class="mini-btn" id="runnerHintBtn">💡 Socratic Hint</button>
+          <button class="mini-btn mini-btn-primary" id="runnerSubmitBtn">Submit Answer →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Score Review View -->
+    <div id="quizResultsView" style="display:none;">
+      <div class="quiz-runner-card">
+        <div style="text-align:center; margin-bottom:24px;">
+          <h2 style="font-size:24px; color:var(--burgundy-dark);">Assessment Complete!</h2>
+          <p class="muted" style="margin-top:6px;">Your responses have been processed and saved to your Data Science learner record.</p>
+          <div style="font-size:44px; font-weight:800; color:var(--coral-dark); margin:16px 0;" id="resultsScorePct">75%</div>
+          <p id="resultsSummaryText">You answered 3 out of 4 questions correctly.</p>
+        </div>
+
+        <div id="resultsBreakdownList" style="display:flex; flex-direction:column; gap:16px;">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:14px; margin-top:28px;">
+          <button class="mini-btn" onclick="window.FloatingApp.goToPage('learning-gaps')">View Updated Learning Gaps →</button>
+          <button class="mini-btn mini-btn-primary" onclick="window.FloatingApp.goToPage('revision')">Go to Study Plan →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-learning-gaps">
+  <div class="page page-generic">
+    <h1 class="page-title">My Learning Gaps</h1>
+    <p class="page-subtitle">Transparent, evidence-based diagnostic detection of weak concepts derived from your assessment data.</p>
+
+    <div id="gapsContainer" style="display:flex; flex-direction:column; gap:18px; margin-top:20px;">
+      <!-- Injected dynamically by script.js -->
+    </div>
+  </div>
+</template>
+
+<template id="tpl-revision">
+  <div class="page page-generic">
+    <div class="section-heading-row" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;">
+      <div>
+        <h1 class="page-title">Personalized Adaptive Study Plan</h1>
+        <p class="page-subtitle">Targeted revision tasks dynamically generated to close your identified learning gaps.</p>
+      </div>
+      <button class="mini-btn" id="refreshPlanBtn">↻ Re-compute Study Plan</button>
+    </div>
+
+    <div id="studyPlanContainer" style="display:flex; flex-direction:column; gap:14px;">
+      <!-- Injected dynamically by script.js -->
+    </div>
+  </div>
+</template>
+
+<template id="tpl-mastery">
+  <div class="page page-generic">
+    <h1 class="page-title">Learning Analytics & Data Science</h1>
+    <p class="page-subtitle">Empirical performance tracking, evidence-weighted mastery models, and pre/post test gains.</p>
+
+    <!-- Top KPI Cards -->
+    <div class="generic-grid" style="margin-bottom:24px;">
+      <section class="generic-block">
+        <p class="section-label">Overall Accuracy</p>
+        <div style="font-size:36px; font-weight:800; color:var(--burgundy);" id="kpiAccuracy">--%</div>
+        <p class="muted" id="kpiQuestions">Evaluated across valid responses</p>
+      </section>
+
+      <section class="generic-block">
+        <p class="section-label">Completed Assessments</p>
+        <div style="font-size:36px; font-weight:800; color:var(--coral);" id="kpiAttempts">--</div>
+        <p class="muted">Logged in persistent learner database</p>
+      </section>
+
+      <section class="generic-block">
+        <p class="section-label">Active Learning Gaps</p>
+        <div style="font-size:36px; font-weight:800; color:var(--gold);" id="kpiGaps">--</div>
+        <p class="muted">Topics needing targeted review</p>
+      </section>
+    </div>
+
+    <!-- Data Science Evaluation Metrics Box -->
+    <div class="eval-card" style="margin-bottom:26px;">
+      <h2 style="font-size:20px; color:var(--cream-light);">Data Science Evaluation & Methodology</h2>
+      <p style="font-size:13.5px; opacity:0.85; margin-top:4px;">
+        Evaluates educational gains and diagnostic precision using evidence-weighted algorithms.
+      </p>
+
+      <div class="eval-grid">
+        <div class="eval-box">
+          <div class="eval-val" id="evalHake">0.55</div>
+          <div class="eval-lbl">Hake's Norm. Gain (\(g\))</div>
+        </div>
+        <div class="eval-box">
+          <div class="eval-val" id="evalPre">48.0%</div>
+          <div class="eval-lbl">Pre-Test Average</div>
+        </div>
+        <div class="eval-box">
+          <div class="eval-val" id="evalPost">76.5%</div>
+          <div class="eval-lbl">Post-Test Average</div>
+        </div>
+        <div class="eval-box">
+          <div class="eval-val" id="evalPrecision">91.4%</div>
+          <div class="eval-lbl">Gap Precision</div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:rgba(243,236,224,0.7);">
+        Methodology: Recency weighting (\(\alpha = 0.70\)) + Error Recurrence Penalty. Distinguishes authentic data from cold-start state.
+      </p>
+    </div>
+
+    <div class="generic-grid">
+      <!-- Topic Mastery Bars -->
+      <section class="generic-block wide">
+        <h2>Topic Mastery Breakdown</h2>
+        <div id="masteryBreakdownList" style="display:flex; flex-direction:column; gap:16px; margin-top:14px;">
+          <!-- Injected dynamically -->
+        </div>
+      </section>
+
+      <!-- Repeated Mistake Diagnostic -->
+      <section class="generic-block">
+        <h2>Recurring Mistake Diagnosis</h2>
+        <div id="repeatedMistakesList">
+          <!-- Injected dynamically -->
+        </div>
+      </section>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-missions">
+  <div class="page page-generic">
+    <h1 class="page-title">Mission-Based Learning</h1>
+    <p class="page-subtitle">Real-world practical engineering & finance scenarios requiring mathematical calculation and justification.</p>
+
+    <div id="missionsContainer" style="display:flex; flex-direction:column; gap:24px; margin-top:20px;">
+      <!-- Injected dynamically by script.js -->
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ai-teacher">
+  <div class="page page-ai-teacher">
+    <h1 class="page-title">Socratic AI Learning Companion</h1>
+    <p class="page-subtitle">Pedagogical tutor grounded in your uploaded textbook with verifiable page citations.</p>
+
+    <section class="learning-card teacher-card" aria-label="Talk to your AI teacher">
+      <!-- Pedagogical Mode Selector -->
+      <div class="socratic-mode-selector">
+        <button class="mode-chip active" data-mode="explain">📖 Explain Simply</button>
+        <button class="mode-chip" data-mode="hint">💡 Socratic Hint</button>
+        <button class="mode-chip" data-mode="socratic_question">🤔 Socratic Question</button>
+        <button class="mode-chip" data-mode="worked_example">📐 Worked Example</button>
+        <button class="mode-chip" data-mode="test_me">🎯 Test My Understanding</button>
+      </div>
+
+      <div class="learning-input-wrap">
+        <label for="teacherInput" class="sr-only">Ask your AI teacher anything</label>
+        <textarea id="teacherInput" class="learning-input" rows="3" placeholder="Ask a question about your textbook (e.g., 'Why does Faraday's law have a negative sign?')..."></textarea>
+        <div class="learning-toolbar">
+          <div class="upload-actions">
+            <span class="pill-badge pill-low" id="tutorEngineBadge">Grounded Engine Active</span>
+          </div>
+          <div class="input-actions">
+            <button class="send-btn" id="sendBtnTeacher" aria-label="Send message">
+              <span aria-hidden="true">↑</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Response Area with Citations -->
+      <div class="ai-response" id="aiResponseTeacher" hidden aria-live="polite"></div>
+    </section>
+  </div>
+</template>
+
+<template id="tpl-doubt-solving">
+  <div class="page page-generic">
+    <h1 class="page-title">Doubt Solving</h1>
+    <p class="page-subtitle">Ask any question to receive a clear, grounded explanation.</p>
+
+    <section class="generic-block" style="margin-bottom:24px;">
+      <h2>Ask Your Doubt</h2>
+      <div class="doubt-input-row">
+        <input type="text" class="doubt-input" placeholder="Type your doubt here…" aria-label="Type your doubt" />
+        <button class="mini-btn mini-btn-primary" id="doubtSendBtn">Ask →</button>
+      </div>
+    </section>
+
+    <div class="generic-grid">
+      <section class="generic-block">
+        <h2>Recent Doubts</h2>
+        <ul class="list-rows">
+          <li><span>Why does Lenz's law satisfy energy conservation?</span><span class="pill-tag pill-good">Resolved</span></li>
+          <li><span>When does integration by parts cycle back to the original integral?</span><span class="pill-tag pill-good">Resolved</span></li>
+        </ul>
+      </section>
+      <section class="generic-block">
+        <h2>Suggested Explanations</h2>
+        <ul class="list-rows">
+          <li><span>Faraday's Law, explained with flux tubes</span><span class="muted">2 min read</span></li>
+          <li><span>SN1 vs SN2 mechanism comparison</span><span class="muted">3 min read</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-notes">
+  <div class="page page-generic">
+    <h1 class="page-title">Textbook Notes & Highlights</h1>
+    <p class="page-subtitle">Key concept summaries extracted from indexed textbook sections.</p>
+    <div class="generic-grid">
+      <section class="generic-block wide">
+        <h2>Curated Chapter Summaries</h2>
+        <ul class="list-rows">
+          <li><span>Electromagnetic Induction — Core Principles & Lenz's Law</span><span class="muted">Page 14</span></li>
+          <li><span>Integration by Parts — LIATE Selection Rule & Multi-step Signs</span><span class="muted">Page 21</span></li>
+          <li><span>Nucleophilic Substitution — SN1 vs SN2 Mechanisms</span><span class="muted">Page 28</span></li>
+          <li><span>Cellular Respiration — Glycolysis & ATP Synthesis</span><span class="muted">Page 33</span></li>
+          <li><span>Compound Interest — Discrete vs Continuous Limit</span><span class="muted">Page 38</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-flashcards">
+  <div class="page page-generic">
+    <h1 class="page-title">Flashcards</h1>
+    <p class="page-subtitle">Spaced-repetition recall cards for targeted concepts.</p>
+    <div class="generic-grid">
+      <section class="generic-block wide">
+        <h2>Available Sets</h2>
+        <ul class="list-rows">
+          <li><span>Electromagnetic Induction Formulas (12 cards)</span><button class="mini-btn" onclick="window.FloatingApp.goToPage('practice')">Study</button></li>
+          <li><span>Calculus Integration Techniques (16 cards)</span><button class="mini-btn" onclick="window.FloatingApp.goToPage('practice')">Study</button></li>
+          <li><span>Organic Reaction Mechanisms (20 cards)</span><button class="mini-btn" onclick="window.FloatingApp.goToPage('practice')">Study</button></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings">
+  <div class="page page-generic">
+    <h1 class="page-title">Settings & Data Management</h1>
+    <p class="page-subtitle">Configure AI services, manage learner profiles, and test demonstration datasets.</p>
+
+    <div class="generic-grid">
+      <section class="generic-block">
+        <h2>Learner Profile</h2>
+        <ul class="list-rows">
+          <li><span>Name</span><span class="muted">Ayaan M.</span></li>
+          <li><span>Curriculum</span><span class="muted">Class 12 / Pre-University STEM</span></li>
+          <li><span>Email</span><span class="muted">ayaan@example.com</span></li>
+          <li><span>Theme</span><span class="pill-tag">Warm Ivory</span></li>
+        </ul>
+      </section>
+
+      <section class="generic-block">
+        <h2>AI Engine Configuration</h2>
+        <p class="muted" style="margin-bottom:12px;">Configure Gemini API Key for live cloud generation, or use the deterministic textbook grounding engine.</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <input type="password" id="inputApiKey" placeholder="Enter GEMINI_API_KEY..." style="padding:8px 12px; border-radius:var(--radius-sm); border:1px solid var(--border);" />
+          <button class="mini-btn mini-btn-primary" id="saveApiKeyBtn">Save & Activate Key</button>
+          <p id="apiKeyStatusMsg" class="muted" style="font-size:12px;"></p>
+        </div>
+      </section>
+
+      <section class="generic-block wide">
+        <h2>Demonstration & Testing Controls</h2>
+        <p class="muted" style="margin-bottom:16px;">
+          Easily reset between an authentic baseline learner dataset (with recorded gap in Integration and strength in Chemistry) and a clean cold-start slate.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <button class="mini-btn mini-btn-primary" id="btnResetDemoData">↻ Reset to Authentic Baseline Dataset</button>
+          <button class="mini-btn" id="btnClearLearnerData">✕ Clear All Data (Test Cold Start)</button>
+        </div>
+        <p id="demoActionMsg" class="muted" style="font-size:13px; margin-top:10px;"></p>
+      </section>
+    </div>
+  </div>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>
